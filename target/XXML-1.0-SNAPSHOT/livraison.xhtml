@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./newTemplate.xhtml">
+
+            <ui:define name="content">
+                <f:view>
+
+
+                    <h:form>
+                        <p:button value="Ajouter" outcome="livajouter"/>
+                        <p:dataTable id="tbl2" value="#{livraisonController.malist()}" var="item">
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdLivraison"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idLivraison}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="DateLivraison"/>
+                                </f:facet>
+                                <h:outputText value="#{item.dateLivraison}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdPharmacien"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idPharmacien}"/>
+                            </p:column>
+                            <p:column width="19%">
+                                <f:facet name="header">
+                                    <h:outputText value="Action" />
+                                </f:facet>
+                                <p:commandButton value="Modifier" action="#{livraisonController.avanmodif(item.idLivraison)}"/>
+                                <p:commandButton value="Supprimer" action="#{livraisonController.supprimer(item.idLivraison)}" onclick=" return confirm('Etes vous sure')" />
+                            </p:column>
+
+                        </p:dataTable>
+                        <h:commandLink>
+
+                            <p:graphicImage value="resources/images/Capture.JPG" width="34"/>
+                            <p:dataExporter type="xml"  target="tbl2" fileName="cars"/>
+                        </h:commandLink>
+
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

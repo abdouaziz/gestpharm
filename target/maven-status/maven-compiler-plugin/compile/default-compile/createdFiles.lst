@@ -1,0 +1,6 @@
+entities\Pharmacien_.class
+entities\Vente_.class
+entities\Fournisseur_.class
+entities\Livraison_.class
+entities\Commande_.class
+entities\Medicament_.class

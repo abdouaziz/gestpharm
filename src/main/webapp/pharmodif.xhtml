@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./newTemplate.xhtml">
+
+            <ui:define name="content">
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="IdPharmacien:" for="idPharmacien" />
+                            <p:inputText id="idPharmacien" value="#{pharmaController.c.idPharmacien}" title="IdPharmacien" required="true" requiredMessage="The IdPharmacien field is required."/>
+                            <p:outputLabel value="Nom:" for="nom" />
+                            <p:inputText id="nom" value="#{pharmaController.c.nom}" title="Nom" required="true" requiredMessage="The Nom field is required."/>
+                            <p:outputLabel value="Prenom:" for="prenom" />
+                            <p:inputText id="prenom" value="#{pharmaController.c.prenom}" title="Prenom" required="true" requiredMessage="The Prenom field is required."/>
+                            <p:outputLabel value="Datenais:" for="datenais" />
+                            <p:inputText id="datenais" value="#{pharmaController.c.datenais}" title="Datenais" required="true" requiredMessage="The Datenais field is required.">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </p:inputText>
+                            <p:outputLabel value="Admin:" for="admin" />
+                            <p:inputText id="admin" value="#{pharmaController.c.admin}" title="Admin" required="true" requiredMessage="The Admin field is required."/>
+                            <p:outputLabel value="Motdepasse:" for="motdepasse" />
+                            <p:inputText id="motdepasse" value="#{pharmaController.c.motdepasse}" title="Motdepasse" required="true" requiredMessage="The Motdepasse field is required."/>
+                            <p:commandButton value="Valider" action="#{pharmaController.modifier(pharmaController.c)}"/>
+                            <p:commandButton value="Annuler" action="#{pharmaController.retour()}"/>
+                           
+                        </p:panelGrid>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

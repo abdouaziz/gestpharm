@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./newTemplate.xhtml">
+
+            <ui:define name="content">
+               
+                <f:view>
+
+
+                    <h:form>
+                        <p:button value="Ajouter" outcome="medicajouter"/>
+                        <p:dataTable id="tbl2" value="#{medicamController.malist()}" var="item">
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="IdMedicament"/>
+                                </f:facet>
+                                <h:outputText value="#{item.idMedicament}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Libelle"/>
+                                </f:facet>
+                                <h:outputText value="#{item.libelle}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Categorie"/>
+                                </f:facet>
+                                <h:outputText value="#{item.categorie}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="PrixAchat"/>
+                                </f:facet>
+                                <h:outputText value="#{item.prixAchat}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="PrixVente"/>
+                                </f:facet>
+                                <h:outputText value="#{item.prixVente}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="QteStock"/>
+                                </f:facet>
+                                <h:outputText value="#{item.qteStock}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="DatePeremption"/>
+                                </f:facet>
+                                <h:outputText value="#{item.datePeremption}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:column>
+                                <p:column width="19%">
+                                <f:facet name="header">
+                                    <h:outputText value="Action" />
+                                </f:facet>
+                                    <p:commandButton value="Modifier" action="#{medicamController.avanmodif(item.idMedicament)}"/>
+                                    <p:commandButton value="Supprimer" action="#{medicamController.supprimer(item.idMedicament)}" onclick=" return confirm('Etes vous sure')" />
+                            </p:column>
+
+                        </p:dataTable>
+                          <h:commandLink>
+
+                            <p:graphicImage value="resources/images/Capture.JPG" width="34"/>
+                            <p:dataExporter type="xml"  target="tbl2" fileName="cars"/>
+                        </h:commandLink>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

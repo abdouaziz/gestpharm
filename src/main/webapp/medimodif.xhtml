@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./newTemplate.xhtml">
+
+            <ui:define name="content">
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="IdMedicament:" for="idMedicament" />
+                            <p:inputText id="idMedicament" value="#{medicamController.c.idMedicament}" title="IdMedicament" required="true" requiredMessage="The IdMedicament field is required."/>
+                            <p:outputLabel value="Libelle:" for="libelle" />
+                            <p:inputText id="libelle" value="#{medicamController.c.libelle}" title="Libelle" required="true" requiredMessage="The Libelle field is required."/>
+                            <p:outputLabel value="Categorie:" for="categorie" />
+                            <p:inputText id="categorie" value="#{medicamController.c.categorie}" title="Categorie" required="true" requiredMessage="The Categorie field is required."/>
+                            <p:outputLabel value="PrixAchat:" for="prixAchat" />
+                            <p:inputText id="prixAchat" value="#{medicamController.c.prixAchat}" title="PrixAchat" required="true" requiredMessage="The PrixAchat field is required."/>
+                            <p:outputLabel value="PrixVente:" for="prixVente" />
+                            <p:inputText id="prixVente" value="#{medicamController.c.prixVente}" title="PrixVente" required="true" requiredMessage="The PrixVente field is required."/>
+                            <p:outputLabel value="QteStock:" for="qteStock" />
+                            <p:inputText id="qteStock" value="#{medicamController.c.qteStock}" title="QteStock" required="true" requiredMessage="The QteStock field is required."/>
+                            <p:outputLabel value="DatePeremption:" for="datePeremption" />
+                            <p:inputText id="datePeremption" value="#{medicamController.c.datePeremption}" title="DatePeremption" required="true" requiredMessage="The DatePeremption field is required.">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </p:inputText>
+                            <p:commandButton value="Valider" action="#{medicamController.modifier()}"/>
+                          
+                        </p:panelGrid>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
